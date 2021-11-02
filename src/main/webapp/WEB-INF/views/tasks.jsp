@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,14 +91,15 @@
 
 							<!--Footer-->
 							<div class="modal-footer flex-center">
-								<a href="important" class="btn btn-danger">Confirm</a> <a
-									type="button" class="btn btn-outline-danger waves-effect"
+								<a href="../deleteTask" class="btn btn-danger" data-confirm="modal">Confirm</a>
+								<a type="button" class="btn btn-outline-danger waves-effect"
 									data-dismiss="modal">Close</a>
 							</div>
 						</div>
 						<!--/.Content-->
 					</div>
 				</div>
+		
 
 
 				<!-- Complete Task -->
@@ -134,166 +137,67 @@
 
 				<div id="task">
 
-					<h5>
-						<div class="row">
-							<div class="col-12">
-								<div class="card card-primary">
-									<div class="card-header">
-										<div
-											class="custom-checkbox custom-checkbox-table custom-control">
-											<input type="checkbox" data-checkboxes="mygroup"
-												data-checkbox-role="dad" class="custom-control-input"
-												id="checkbox-all"> <label for="checkbox-all"
-												class="custom-control-label" data-toggle="modal" data-target="#modalPush1">&nbsp;</label>
+					<c:forEach items="${listtasks}" var="task">
+		
+		
+						<h5>
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-primary">
+										<div class="card-header">
+											<div
+												class="custom-checkbox custom-checkbox-table custom-control">
+												<input type="checkbox" data-checkboxes="mygroup"
+													data-checkbox-role="dad" class="custom-control-input"
+													id="checkbox-all"> <label for="checkbox-all"
+													class="custom-control-label" data-toggle="modal"
+													data-target="#modalPush1">&nbsp;</label>
+											</div>
+											&nbsp;&nbsp;
+											<h4>${task.taskName}</h4>
+											<div class="card-header-action">
+												<a href="/getTask/${task.taskId }"
+													class="btn btn-icon btn-primary"><i class="far fa-edit"
+													data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp; 
+													
+													<a href="${task.taskId }/deleteTask" class="btn btn-icon btn-danger"  data-toggle="modal" data-target="#modalPush"><i
+													class="fas fa-trash-alt" title="Delete Task"></i></a>&nbsp;&nbsp;
+												
+												<a href="#" class="btn btn-icon btn-light" data-toggle="tooltip" title="Mark as Important"><i
+													class="fas fa-star"></i></a>&nbsp;&nbsp;
+											</div>
 										</div>
-										&nbsp;&nbsp;
-										<h4>Task Name</h4>
-										<div class="card-header-action">
-											<a href="edittask" class="btn btn-icon btn-primary"><i
-												class="far fa-edit" data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp;
-											<a href="#" class="btn btn-icon btn-danger"><i
-												class="fas fa-trash-alt" data-toggle="modal" data-target="#modalPush"
-												title="Delete Task"></i></a>&nbsp;&nbsp; <a href="#"
-												class="btn btn-icon btn-light" data-toggle="tooltip"
-												title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
+										<div class="card-body">
+											<div class="row">
+
+												<div class="col">
+													<p style="font-size: 15px">${task.description}</p>
+												</div>
+												<div class="col">
+													<p style="font-size: 15px">
+														<b style="color: green">${task.startDate }</b> - <b
+															style="color: red">${task.endDate }</b>
+													</p>
+												</div>
+												<div class="col">
+													<p style="font-size: 15px; color: orange">
+														<b>${task.taskTime}</b>
+													</p>
+												</div>
+
+											</div>
+
+
 										</div>
+
 									</div>
-									<div class="card-body">
-										<div class="row">
-
-											<div class="col">
-												<p style="font-size: 15px">In the Afternoon</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px">
-													<b style="color: green">29-10-2021</b> - <b
-														style="color: red">5-11-2021</b>
-												</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px; color: orange">
-													<b>1:00 PM</b>
-												</p>
-											</div>
-
-										</div>
-
-
-									</div>
-
 								</div>
 							</div>
-						</div>
-					</h5>
+						</h5>
+
+					</c:forEach>
 
 
-
-					<h5>
-						<div class="row">
-							<div class="col-12">
-								<div class="card card-success">
-									<div class="card-header">
-										<div
-											class="custom-checkbox custom-checkbox-table custom-control">
-											<input type="checkbox" data-checkboxes="mygroup"
-												data-checkbox-role="dad" class="custom-control-input"
-												id="checkbox-all"> <label for="checkbox-all"
-												class="custom-control-label">&nbsp;</label>
-										</div>
-										&nbsp;&nbsp;
-										<h4>Task Name</h4>
-										<div class="card-header-action">
-											<a href="edittask" class="btn btn-icon btn-primary"><i
-												class="far fa-edit" data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp;
-											<a href="#" class="btn btn-icon btn-danger"><i
-												class="fas fa-trash-alt" data-toggle="tooltip"
-												title="Delete Task"></i></a>&nbsp;&nbsp; <a href="#"
-												class="btn btn-icon btn-light" data-toggle="tooltip"
-												title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
-										</div>
-									</div>
-									<div class="card-body">
-										<div class="row">
-
-											<div class="col">
-												<p style="font-size: 15px">In the Afternoon</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px">
-													<b style="color: green">29-10-2021</b> - <b
-														style="color: red">5-11-2021</b>
-												</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px; color: orange">
-													<b>1:00 PM</b>
-												</p>
-											</div>
-
-										</div>
-
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</h5>
-
-
-
-
-					<h5>
-						<div class="row">
-							<div class="col-12">
-								<div class="card card-danger">
-									<div class="card-header">
-										<div
-											class="custom-checkbox custom-checkbox-table custom-control">
-											<input type="checkbox" data-checkboxes="mygroup"
-												data-checkbox-role="dad" class="custom-control-input"
-												id="checkbox-all"> <label for="checkbox-all"
-												class="custom-control-label">&nbsp;</label>
-										</div>
-										&nbsp;&nbsp;
-										<h4>Task Name</h4>
-										<div class="card-header-action">
-											<a href="edittask" class="btn btn-icon btn-primary"><i
-												class="far fa-edit" data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp;
-											<a href="#" class="btn btn-icon btn-danger"><i
-												class="fas fa-trash-alt" data-toggle="tooltip"
-												title="Delete Task"></i></a>&nbsp;&nbsp; <a href="#"
-												class="btn btn-icon btn-light" data-toggle="tooltip"
-												title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
-										</div>
-									</div>
-									<div class="card-body">
-										<div class="row">
-
-											<div class="col">
-												<p style="font-size: 15px">In the Afternoon</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px">
-													<b style="color: green">29-10-2021</b> - <b
-														style="color: red">5-11-2021</b>
-												</p>
-											</div>
-											<div class="col">
-												<p style="font-size: 15px; color: orange">
-													<b>1:00 PM</b>
-												</p>
-											</div>
-
-										</div>
-
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</h5>
 
 				</div>
 

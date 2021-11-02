@@ -27,7 +27,7 @@
                 <h4>Register</h4>
               </div>
               <div class="card-body">
-                <form method="POST">
+                <form method="POST" action="saveuser">
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="firstName">First Name</label>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group col-6">
                       <label for="mobileNumber">Mobile Number</label>
-                      <input id="mobileNumber" type="text" class="form-control" name="mobileNumber" required>
+                      <input id="mobileNumber" type="text" class="form-control" name="mobileNo" required>
                     </div>
                   </div>
                   <div class="form-group">

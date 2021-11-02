@@ -1,9 +1,19 @@
 package com.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import com.entity.TasksEntity;
+import com.entity.UserEntity;
+import com.repository.TasksRepository;
 
 
 
@@ -11,12 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 	
 	@Autowired
-	/*
-	 * TasksRepository tasksrepository;
-	 */
+	
+	  TasksRepository tasksrepository;
+	 
 	@GetMapping("/userhome")
-	public String users() {
+	public String users(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) {
 		// TODO Auto-generated method stub
+		 List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
+		  model.addAttribute("listtask", tasks);
 		return "userhome";
 		
 	}
@@ -130,18 +142,5 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/addtask")
-	public String addtasks() {
-		// TODO Auto-generated method stub
-		return "tasks";
-		
-	}
 	
-	@GetMapping("/edittask")
-	public String edittask() {
-		// TODO Auto-generated method stub
-		return "edittask";
-		
-	}
-
 }

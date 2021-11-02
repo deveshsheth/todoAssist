@@ -6,14 +6,14 @@
 <meta charset="ISO-8859-1">
 <title>ToDoAssist</title>
 <!-- General CSS Files -->
-<link rel="stylesheet" href="assets/css/app.min.css">
+<link rel="stylesheet" href="/assets/css/app.min.css">
 <!-- Template CSS -->
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/components.css">
 <!-- Custom style CSS -->
-<link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="/assets/css/custom.css">
 <link rel='shortcut icon' type='image/x-icon'
-	href='assets/img/favicon.ico' />
+	href='/assets/img/favicon.ico' />
 </head>
 <body>
 	
@@ -61,16 +61,7 @@
 								</div>
 							</div>
 							<div class="dropdown-list-content dropdown-list-message">
-								 <!-- <a href="#" class="dropdown-item"> <span
-									class="dropdown-item-avatar text-white"> <img
-										alt="image" src="assets/img/users/user-2.png"
-										class="rounded-circle">
-								</span> <span class="dropdown-item-desc"> <span
-										class="message-user">Sarah Smith</span> <span
-										class="time messege-text">Client Requirements</span> <span
-										class="time">2 Days Ago</span>
-								</span>
-								</a> -->
+								
 							</div>
 							<div class="dropdown-footer text-center">
 								<a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -105,13 +96,13 @@
 						class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <i class="fas fa-user" style="color: #000;margin-top: 14%"></i> <span
 							class="d-sm-none d-lg-inline-block"></span></a>
 						<div class="dropdown-menu dropdown-menu-right pullDown">
-							<div class="dropdown-title">Hello (User Name)</div>
-							<a href="profile.html" class="dropdown-item has-icon"> <i
+							<div class="dropdown-title">Hello ${user.firstName}&nbsp;${user.lastName}</div>
+							<a href="myprofile" class="dropdown-item has-icon"> <i
 								class="far
 										fa-user"></i> Profile
 							</a> 
 							
-							<a href="auth-login.html"
+							<a href="/"
 								class="dropdown-item has-icon text-danger"> <i
 								class="fas fa-sign-out-alt"></i> Logout
 							</a>
@@ -121,27 +112,27 @@
 			<div class="main-sidebar sidebar-style-2">
 				<aside id="sidebar-wrapper">
 					<div class="sidebar-brand">
-						<a href="userhome"><img alt="image" src="assets/img/todologo.png" class="header-logo"> <span class="logo-name">TODOAssist</span>
+						<a href="userhome"><img alt="image" src="/assets/img/todologo.png" class="header-logo"> <span class="logo-name">TODOAssist</span>
 						</a>
 					</div>
 					<ul class="sidebar-menu">
 						<li class="menu-header" style="font-size: 13px">Main</li>
-						<li class="dropdown"><a href="userhome" class="nav-link"><i
+						<li class="dropdown"><a href="/userhome" class="nav-link"><i
 								class="fas fa-home" style="font-size: 20px"></i><span>Dashboard</span></a></li>
 
-						<li class="dropdown"><a href="myday" class="nav-link"><i
+						<li class="dropdown"><a href="/myday" class="nav-link"><i
 								class="fas fa-sun" style="font-size: 20px"></i><span>MyDay</span></a></li>
 
-						<li class="dropdown"><a href="important" class="nav-link"><i
+						<li class="dropdown"><a href="/important" class="nav-link"><i
 								class="fas fa-star" style="font-size: 20px"></i><span>Important</span></a></li>
 
-						<li class="dropdown"><a href="tasks" class="nav-link"><i
+						<li class="dropdown"><a href="/tasks" class="nav-link"><i
 								class="fas fa-tasks" style="font-size: 20px"></i><span>Tasks</span></a></li>
 
-						<li class="dropdown"><a href="calendar" class="nav-link"><i
+						<li class="dropdown"><a href="/calendar" class="nav-link"><i
 								class="far fa-calendar-alt" style="font-size: 20px"></i><span>Calendar</span></a></li>
 
-						<li class="dropdown"><a href="notes" class="nav-link"><i
+						<li class="dropdown"><a href="/notes" class="nav-link"><i
 								class="fas fa-file-alt" style="font-size: 20px"></i><span>Notes</span></a></li>
 
 						
@@ -251,15 +242,15 @@
 	</div>
 
 	<!-- General JS Scripts -->
-	<script src="assets/js/app.min.js"></script>
+	<script src="/assets/js/app.min.js"></script>
 	<!-- JS Libraies -->
-	<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
+	<script src="/assets/bundles/apexcharts/apexcharts.min.js"></script>
 	<!-- Page Specific JS File -->
-	<script src="assets/js/page/index.js"></script>
+	<script src="/assets/js/page/index.js"></script>
 	<!-- Template JS File -->
-	<script src="assets/js/scripts.js"></script>
+	<script src="/assets/js/scripts.js"></script>
 	<!-- Custom JS File -->
-	<script src="assets/js/custom.js"></script>
+	<script src="/assets/js/custom.js"></script>
 	<script type="text/javascript">
 	window.onload = function() {
 		  clock();  

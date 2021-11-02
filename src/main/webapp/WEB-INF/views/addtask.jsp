@@ -52,10 +52,11 @@
 
 					<div class="col">
 						<div class="card">
-							<form>
+							<form action="addTasks" method="post">
 								<div class="card-header">
 									<h4>Task Registration</h4>
 								</div>
+								<input type="hidden" name="userId" value="${user.userId }"/>
 								<div class="card-body">
 									<div class="form-group">
 										<label>Task Name</label> <input type="text" placeholder="Enter the Task Name"
