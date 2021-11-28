@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-	
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +47,9 @@
 			<!-- Main Content -->
 			<div class="main-content">
 				<section class="section">
+					
 					<div class="row ">
-						<div class="col">
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="card">
 								<div class="card-statistic-4">
 									<div class="align-items-center justify-content-between">
@@ -57,12 +58,10 @@
 												<div class="card-content">
 													<h5 class="font-15">Today's Task</h5>
 													<h2 class="mb-3 font-18">25</h2>
-													<p class="mb-0">
-														<span class="col-green"></span>
-													</p>
+
 												</div>
 											</div>
-											<div class="col">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
 												<div class="banner-img">
 													<img src="assets/img/TodayTask.jpg" alt="">
 												</div>
@@ -72,7 +71,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="card">
 								<div class="card-statistic-4">
 									<div class="align-items-center justify-content-between">
@@ -81,10 +80,10 @@
 												<div class="card-content">
 													<h5 class="font-15">Important Task</h5>
 													<h2 class="mb-3 font-18">17</h2>
-													<!-- <p class="mb-0"><span class="col-orange">09%</span> Decrease</p> -->
+
 												</div>
 											</div>
-											<div class="col">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
 												<div class="banner-img">
 													<img src="assets/img/ImportantTask.png" alt="">
 												</div>
@@ -94,7 +93,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col">
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="card">
 								<div class="card-statistic-4">
 									<div class="align-items-center justify-content-between">
@@ -103,14 +102,13 @@
 												<div class="card-content">
 													<h5 class="font-15">My Tasks</h5>
 													<h2 class="mb-3 font-18">2,128</h2>
-													<!--  <p class="mb-0"><span class="col-green">18%</span>
-                            Increase</p> -->
+
+
 												</div>
 											</div>
-											<div class="col">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
 												<div class="banner-img">
 													<img src="assets/img/MyTask.jpg" alt="">
-
 												</div>
 											</div>
 										</div>
@@ -120,6 +118,10 @@
 						</div>
 
 					</div>
+
+
+
+
 
 					<div class="row">
 						<div class="col">
@@ -147,7 +149,7 @@
 						</div>
 
 					</div>
-					
+
 					<div class="row">
 						<div class="col-12">
 							<div class="card">
@@ -187,7 +189,7 @@
 												<th>Time</th>
 												<th>Action</th>
 											</tr>
-											<c:forEach items="${listtask}" var="task">
+											<%-- <c:forEach items="${listtask}" var="task">
 											<tbody id="task">
 												<tr>
 													<td class="p-0 text-center">
@@ -215,7 +217,7 @@
 												</tr>
 												
 											</tbody>
-											</c:forEach>
+											</c:forEach> --%>
 											<tr>
 												<td colspan="7" style="text-align: center;"><a
 													href="myday"
@@ -243,24 +245,20 @@
 	<script type="text/javascript">
 		//pie
 		var ctxP = document.getElementById("pieChart").getContext('2d');
-		var myPieChart = new Chart(ctxP,
-				{
-					type : 'pie',
-					data : {
-						labels : [ "TodayTask", "ImportantTask", "MyTasks",
-								],
-						datasets : [ {
-							data : [ 50, 80, 100],
-							backgroundColor : [ "#6610f2", "#7c4dff",
-									"#b388ff"],
-							hoverBackgroundColor : [ "#6610f2", "#7c4dff",
-									"#b388ff"]
-						} ]
-					},
-					options : {
-						responsive : true
-					}
-				});
+		var myPieChart = new Chart(ctxP, {
+			type : 'pie',
+			data : {
+				labels : [ "TodayTask", "ImportantTask", "MyTasks", ],
+				datasets : [ {
+					data : [ 50, 80, 100 ],
+					backgroundColor : [ "#6610f2", "#7c4dff", "#b388ff" ],
+					hoverBackgroundColor : [ "#6610f2", "#7c4dff", "#b388ff" ]
+				} ]
+			},
+			options : {
+				responsive : true
+			}
+		});
 	</script>
 	<script type="text/javascript">
 		//line
@@ -272,12 +270,12 @@
 						"June", "July", "August", "September", "October",
 						"November", "December" ],
 				datasets : [ /* {
-					label : "Tasks",
-					data : [ 65, 59, 80, 81, 56, 55, 40, 80, 81, 56, 55, 40 ],
-					backgroundColor : [ 'rgba(105, 0, 132, .2)', ],
-					borderColor : [ 'rgba(200, 99, 132, .7)', ],
-					borderWidth : 2
-				}, */ {
+								label : "Tasks",
+								data : [ 65, 59, 80, 81, 56, 55, 40, 80, 81, 56, 55, 40 ],
+								backgroundColor : [ 'rgba(105, 0, 132, .2)', ],
+								borderColor : [ 'rgba(200, 99, 132, .7)', ],
+								borderWidth : 2
+							}, */{
 					label : "Tasks",
 					data : [ 28, 48, 40, 19, 86, 27, 90, 40, 19, 86, 27, 90 ],
 					backgroundColor : [ 'rgba(0, 137, 132, .2)', ],

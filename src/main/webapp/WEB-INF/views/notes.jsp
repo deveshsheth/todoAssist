@@ -54,7 +54,8 @@ textarea {
 					</div>
 				</div>
 
-
+				<a href="addtask" class="btn btn-icon icon-left btn-primary" style="float: right"> Save</a><br><br>
+					
 				<form method="post">
 					<textarea id="mytextarea"></textarea>
 				</form>

@@ -51,14 +51,6 @@ public class TaskController {
 	  }
 	 
 	
-		/*
-		 * @GetMapping("/edittask") public String edittask() {
-		 * 
-		 * return "edittask"; }
-		 */
-		 
-	
-	
 	 @PostMapping("updateTask") public String updateTask(TasksEntity task) {
 	  
 	  TasksEntity t = tasksrepository.getById(task.getTaskId());
@@ -80,21 +72,33 @@ public class TaskController {
 		
 		  List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
 		  model.addAttribute("listtasks", tasks);
+		  
+		
 		 
 		return "tasks";
 
 	}
 	
 	@GetMapping("/myday")
-	public String myday() {
+	public String myday(Model model) {
 		// TODO Auto-generated method stub
-		/*
-		 * List<TasksEntity> mydaytasks = tasksrepository.findAllTodayTask();
-		 * model.addAttribute("mydaytask", mydaytasks);
-		 */
+		
+		  List<TasksEntity> mydaytasks = tasksrepository.findAllTodayTask();
+		  model.addAttribute("mydaytask", mydaytasks);
+		 
 		 
 		return "myday";
 		
+	}
+	
+	@GetMapping("impTask/{taskId}")
+	public String imptask(TasksEntity tasks, @PathVariable("taskId") Long taskId) {
+		TasksEntity utask = tasksrepository.findByTaskId(taskId);
+		utask.setImportant(1);
+		
+		tasksrepository.save(utask);
+
+		return "redirect:/tasks";
 	}
 	
 	@GetMapping("/deleteTask/{taskId}")
@@ -103,5 +107,32 @@ public class TaskController {
 
 		return "redirect:/tasks";
 	}
+	
+	@GetMapping("unImportant/{taskId}")
+	public String unimportnatTasks(TasksEntity tasks,@PathVariable("taskId") Long taskId)
+	{
+		
+		TasksEntity utask = tasksrepository.findByTaskId(taskId);
+		utask.setImportant(0);
+		
+		tasksrepository.save(utask);
+
+		return "redirect:/important";
+	}
+	
+	
+	@GetMapping("/important")
+	public String important(Model model, @SessionAttribute("user") UserEntity user) {
+		// TODO Auto-generated method stub
+	
+		System.out.println(user.getUserId()+"tasks");
+		List<TasksEntity> utasks=tasksrepository.findByUserIdAndImportant(user.getUserId(), 1);
+		System.out.println(utasks);
+		model.addAttribute("utasks",utasks);
+		
+		return "important";
+		
+	}
+	
 	
 }

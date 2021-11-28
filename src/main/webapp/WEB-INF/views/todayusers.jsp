@@ -34,11 +34,11 @@
 							<div class="card-header">
 
 
-								<h4>New User</h4>
+								<h4>Today's Users</h4>
 								<div class="card-header-action">
 									<h4>
 										<a href="adminhome"><b style="color: blue">Dashboard</b></a>
-										&nbsp;/ New User
+										&nbsp;/ TodayUsers
 									</h4>
 
 								</div>
@@ -50,7 +50,7 @@
 				</div>
 
 
-				 <br>
+				<br>
 
 				<div class="row">
 					<div class="col-12">
@@ -58,7 +58,7 @@
 							<div class="card-header">
 								<h4>Today's New Users</h4>
 								<div class="card-header-form">
-									<form>
+									<!-- <form>
 										<div class="input-group">
 											<input type="text" class="form-control" id="searchtask"
 												placeholder="Search">
@@ -68,75 +68,64 @@
 												</button>
 											</div>
 										</div>
-									</form>
+									</form> -->
 								</div>
 							</div>
-							<div class="card-body p-0">
+							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-hover">
-										<thead>
-											<tr>
-
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email</th>
-												<th>Date of Birth</th>
-												<th>Age</th>
-												<th>Mobile Number</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody id="task">
-											<tr>
-
-												<td>Devesh</td>
-												<td>Sheth</td>
-												<td>deveshssheth2018@gmail.com</td>
-												<td>16-09-2000</td>
-												<td>21</td>
-												<td>9856258652</td>
-												<td><span class="badge badge-success">Online</span></td>
-
-											</tr>
-											<tr>
-												<td>Aryan</td>
-												<td>Sheth</td>
-												<td>deveshssheth2018@gmail.com</td>
-												<td>16-09-2000</td>
-												<td>21</td>
-												<td>9856258652</td>
-												<td><span class="badge badge-secondary">Offline</span></td>
-
-											</tr>
-											<tr>
-
-												<td>Devesh</td>
-												<td>Sheth</td>
-												<td>deveshssheth2018@gmail.com</td>
-												<td>16-09-2000</td>
-												<td>21</td>
-												<td>9856258652</td>
-												<td><span class="badge badge-success">Online</span></td>
-
-											</tr>
-											<tr>
-
-												<td>Devesh</td>
-												<td>Sheth</td>
-												<td>deveshssheth2018@gmail.com</td>
-												<td>16-09-2000</td>
-												<td>21</td>
-												<td>9856258652</td>
-												<td><span class="badge badge-secondary">Offline</span></td>
-
-											</tr>
-										</tbody>
+									<div id="tableExport_wrapper"
+										class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
 										
-										<br>
-									</table>
+										<table
+											class="table table-striped table-hover dataTable no-footer"
+											id="tableExport" style="width: 100%;" role="grid"
+											aria-describedby="tableExport_info">
+											<thead>
+												<tr role="row">
+													<th style="width: 114px;">Name</th>
+													<th style="width: 114px;">Email</th>
+													<th style="width: 114px;">DateofBirth</th>
+													<th style="width: 114px;">Age</th>
+													<th style="width: 114px;">Mobile Number</th>
+											
+													
+												</tr>
+											</thead>
+											<tbody>
 
+
+											
+												<tr role="row">
+													<td>Devesh Sheth</td>
+													<td>deveshssheth2018@gmail.com</td>
+													<td>16-09-2000</td>
+													<td>21</td>
+													<td>9856856985</td>
+													
+												</tr>
+												<tr role="row">
+													<td>Aryan Shah</td>
+													<td>deveshssheth2018@gmail.com</td>
+													<td>16-09-2000</td>
+													<td>21</td>
+													<td>9856856985</td>
+													
+												</tr>
+												<tr role="row">
+													<td>Devesh Sheth</td>
+													<td>deveshssheth2018@gmail.com</td>
+													<td>16-09-2000</td>
+													<td>21</td>
+													<td>9856856985</td>
+													
+												</tr>
+												
+											</tbody>
+										</table>
+										
+										
+									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -150,7 +139,19 @@
 
 	</div>
 	</div>
-
+	<script src="assets/bundles/datatables/datatables.min.js"></script>
+	<script
+		src="assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+	<script
+		src="assets/bundles/datatables/export-tables/dataTables.buttons.min.js"></script>
+	<script
+		src="assets/bundles/datatables/export-tables/buttons.flash.min.js"></script>
+	<script src="assets/bundles/datatables/export-tables/jszip.min.js"></script>
+	<script src="assets/bundles/datatables/export-tables/pdfmake.min.js"></script>
+	<!-- <script src="assets/bundles/datatables/export-tables/vfs_fonts.js"></script> -->
+	<script
+		src="assets/bundles/datatables/export-tables/buttons.print.min.js"></script>
+	<script src="assets/js/page/datatables.js"></script>
 	<script>
 		var $rows = $('#task tr');
 		$('#searchtask').keyup(function() {

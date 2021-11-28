@@ -16,8 +16,16 @@ public interface TasksRepository extends JpaRepository<TasksEntity, Long> {
 	
 	List<TasksEntity> findByUserId(Long userId);
 
-	@Query(value = "select * from tasks where start_date >= CURRENT_DATE and end_date < '2021-11-05' ",nativeQuery = true)
+	@Query(value = "select * from tasks where start_date = CURRENT_DATE and end_date = CURRENT_DATE ",nativeQuery = true)
 	List<TasksEntity> findAllTodayTask();
+	
+	List<TasksEntity> findByUserIdAndImportant(Long userId,Integer important);
+	
+	TasksEntity findByTaskId(Long taskId);
+	
+
+	
+	
 	
 	 
 	

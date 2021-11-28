@@ -29,6 +29,8 @@ public class UserController {
 		// TODO Auto-generated method stub
 		 List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
 		  model.addAttribute("listtask", tasks);
+		  
+		  
 		return "userhome";
 		
 	}
@@ -75,16 +77,6 @@ public class UserController {
 		
 	}
 	
-	
-	
-	@GetMapping("/important")
-	public String important() {
-		// TODO Auto-generated method stub
-		return "important";
-		
-	}
-	
-
 	
 	@GetMapping("/groups")
 	public String groups() {

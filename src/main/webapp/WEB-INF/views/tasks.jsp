@@ -68,6 +68,10 @@
 				</div>
 				<br> <br> <br>
 
+				<!-- <div id="demo" class="alert alert-danger" role="alert">A
+					simple danger alert—check it out!</div> -->
+
+
 				<!--Delete Task -->
 				<div class="modal fade" id="modalPush" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,18 +92,20 @@
 								<p>Are you sure want to delete the task?</p>
 
 							</div>
-
-							<!--Footer-->
-							<div class="modal-footer flex-center">
-								<a href="../deleteTask" class="btn btn-danger" data-confirm="modal">Confirm</a>
-								<a type="button" class="btn btn-outline-danger waves-effect"
-									data-dismiss="modal">Close</a>
-							</div>
+							
+								<!--Footer-->
+								<div class="modal-footer flex-center">
+									<a href="#" class="btn btn-danger"
+										data-confirm="modal">Confirm</a> <a type="button"
+										class="btn btn-outline-danger waves-effect"
+										data-dismiss="modal">Close</a>
+								</div>
+						
 						</div>
 						<!--/.Content-->
 					</div>
 				</div>
-		
+
 
 
 				<!-- Complete Task -->
@@ -138,33 +144,36 @@
 				<div id="task">
 
 					<c:forEach items="${listtasks}" var="task">
-		
-		
+
+
 						<h5>
 							<div class="row">
 								<div class="col-12">
 									<div class="card card-primary">
 										<div class="card-header">
-											<div
-												class="custom-checkbox custom-checkbox-table custom-control">
+											<div class="custom-checkbox custom-checkbox-table custom-control">
 												<input type="checkbox" data-checkboxes="mygroup"
 													data-checkbox-role="dad" class="custom-control-input"
-													id="checkbox-all"> <label for="checkbox-all"
-													class="custom-control-label" data-toggle="modal"
-													data-target="#modalPush1">&nbsp;</label>
+													id="checkbox-all"><label for="checkbox-all"
+													title="Complete Task"
+													class="custom-control-label"> <!-- data-toggle="modal"
+													data-target="#modalPush1" -->&nbsp;</label>
 											</div>
 											&nbsp;&nbsp;
 											<h4>${task.taskName}</h4>
 											<div class="card-header-action">
+											
 												<a href="/getTask/${task.taskId }"
 													class="btn btn-icon btn-primary"><i class="far fa-edit"
 													data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp; 
 													
-													<a href="${task.taskId }/deleteTask" class="btn btn-icon btn-danger"  data-toggle="modal" data-target="#modalPush"><i
-													class="fas fa-trash-alt" title="Delete Task"></i></a>&nbsp;&nbsp;
-												
-												<a href="#" class="btn btn-icon btn-light" data-toggle="tooltip" title="Mark as Important"><i
-													class="fas fa-star"></i></a>&nbsp;&nbsp;
+													<a href="/deleteTask/${task.taskId}" class="btn btn-icon btn-danger" data-toggle="modal"
+													data-target="#modalPush"><i class="fas fa-trash-alt"
+													title="Delete Task"></i></a>&nbsp;&nbsp; 
+													
+													<a href="/impTask/${task.taskId}" class="btn btn-icon btn-light" data-toggle="tooltip"
+													title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
+											
 											</div>
 										</div>
 										<div class="card-body">
@@ -210,7 +219,18 @@
 
 		</div>
 	</div>
+	<script>
+		function myDelFunction() {
+			var txt;
 
+			if (confirm("Are you sure want to delete the Task ?")) {
+				txt = "You pressed OK!";
+			} else {
+				txt = "You pressed Cancel!";
+			}
+			document.getElementById("demo").innerHTML = txt;
+		}
+	</script>
 	<script>
 		var $rows = $('#task h5');
 		$('#searchtask').keyup(function() {
