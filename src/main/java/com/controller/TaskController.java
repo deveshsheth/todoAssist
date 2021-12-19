@@ -72,20 +72,17 @@ public class TaskController {
 		
 		  List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
 		  model.addAttribute("listtasks", tasks);
-		  
-		
 		 
 		return "tasks";
 
 	}
 	
 	@GetMapping("/myday")
-	public String myday(Model model) {
+	public String myday(Model model,@SessionAttribute("user") UserEntity user) {
 		// TODO Auto-generated method stub
 		
-		  List<TasksEntity> mydaytasks = tasksrepository.findAllTodayTask();
+		  List<TasksEntity> mydaytasks = tasksrepository.myDay(user.getUserId());
 		  model.addAttribute("mydaytask", mydaytasks);
-		 
 		 
 		return "myday";
 		

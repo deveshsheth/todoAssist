@@ -95,7 +95,7 @@
 							
 								<!--Footer-->
 								<div class="modal-footer flex-center">
-									<a href="#" class="btn btn-danger"
+									<a href="#" id="deleteTask" class="btn btn-danger"
 										data-confirm="modal">Confirm</a> <a type="button"
 										class="btn btn-outline-danger waves-effect"
 										data-dismiss="modal">Close</a>
@@ -241,6 +241,13 @@
 				return !~text.indexOf(val);
 			}).hide();
 		});
+	</script>
+	<script type="text/javascript">
+	function setDelId(taskiId) {
+		
+		//alert(taskid);
+			$("#deleteTask")[0].href="deleteTask/"+taskId;
+		}
 	</script>
 </body>
 </html>

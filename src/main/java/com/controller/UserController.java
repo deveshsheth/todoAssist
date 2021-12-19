@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +29,24 @@ public class UserController {
 	@GetMapping("/userhome")
 	public String users(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) {
 		// TODO Auto-generated method stub
-		 List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
-		  model.addAttribute("listtask", tasks);
-		  
-		  
-		return "userhome";
 		
+		
+		Date d=new Date();
+		
+		  LocalDate obj=LocalDate.now();
+		
+			
+			  model.addAttribute("todaysCount",tasksrepository.countByStartDateAndUserId(obj,user.getUserId()));
+			 
+			
+			  model.addAttribute("Important",tasksrepository.countByImportantAndUserId(user.getUserId()));
+			  model.addAttribute("UserTasks",tasksrepository.countByUserId(user.getUserId()));
+			  
+			
+			  List<TasksEntity> tasks = tasksrepository.myDay(user.getUserId());
+			  model.addAttribute("listtask", tasks);
+			 
+		return "userhome";
 	}
 	
 	@GetMapping("/forgotpassword")
@@ -48,6 +62,7 @@ public class UserController {
 		return "resetpassword";
 		
 	}
+	
 	
 	@GetMapping("/userheader")
 	public String userheader() {
