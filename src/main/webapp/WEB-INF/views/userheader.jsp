@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +78,8 @@
 					class="nav-link nav-link-lg
 									collapse-btn"> <i
 						data-feather="align-justify"></i></a></li>
-				<li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
-						<i data-feather="maximize"></i>
+				<!-- <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+						<i data-feather="maximize"></i> -->
 				</a></li>
 				<li>
 					<!-- <form class="form-inline mr-auto">
@@ -109,7 +111,7 @@
 			<li>
 				<p id="currentTime"
 					style="font-size: 25px; margin-top: 12%; font-weight: 500; color: #000"></p>
- 
+
 			</li>&nbsp;
 
 
@@ -122,12 +124,22 @@
 					<div class="dropdown-header">
 						Today's Task
 						<div class="float-right">
-							<a href="#">Mark All As Read</a>
+							<!-- <a href="#">Mark All As Read</a> -->
 						</div>
+
 					</div>
-					<div class="dropdown-list-content dropdown-list-message"></div>
+
+					<div class="dropdown-list-content dropdown-list-message"
+						tabindex="3" style="overflow: hidden; outline: none;">
+
+<p>fjfjfgii</p>
+						 <c:forEach items="${todaytasknotification}" var="t">
+						<h1>djnifd</h1>
+						</c:forEach> 
+					</div>
+
 					<div class="dropdown-footer text-center">
-						<a href="#">View All <i class="fas fa-chevron-right"></i></a>
+						<a href="myday">View All <i class="fas fa-chevron-right"></i></a>
 					</div>
 				</div></li>
 			<li class="dropdown dropdown-list-toggle"><a href="#"
@@ -139,21 +151,27 @@
 					<div class="dropdown-header">
 						Upcoming Task
 						<div class="float-right">
-							<a href="#">Mark All As Read</a>
+							<!-- <a href="#">Mark All As Read</a> -->
 						</div>
+
 					</div>
-					<div class="dropdown-list-content dropdown-list-icons">
-						<!--  <a href="#" class="dropdown-item"> <span
-									class="dropdown-item-icon bg-info text-white"> <i
-										class="fas
-												fa-bell"></i>
-								</span> <span class="dropdown-item-desc"> Welcome to Otika
-										template! <span class="time">Yesterday</span>
-								</span>
-								</a> -->
+
+					<div class="dropdown-list-content dropdown-list-message"
+						tabindex="3" style="overflow: hidden; outline: none;">
+
+						<c:forEach items="${upcomingtasks}" var="task">
+							<a href="#" class="dropdown-item"> 
+							 
+							<span class="dropdown-item-desc"> <span class="message-user">${task.taskName}</span><br>
+							<span class="message-user">${task.description}</span><br> 
+							<span class="message-user" style="font-size: 12px">${task.taskTime}</span>
+							</span>
+							</a>
+						</c:forEach>
 					</div>
+
 					<div class="dropdown-footer text-center">
-						<a href="#">View All <i class="fas fa-chevron-right"></i></a>
+						<a href="myday">View All <i class="fas fa-chevron-right"></i></a>
 					</div>
 				</div></li>
 			<li class="dropdown"><a href="#" data-toggle="dropdown"
@@ -163,9 +181,8 @@
 				<div class="dropdown-menu dropdown-menu-right pullDown">
 					<div class="dropdown-title">Hello
 						${user.firstName}&nbsp;${user.lastName}</div>
-					<a href="myprofile" class="dropdown-item has-icon"> <i
-						class="far
-										fa-user"></i> Profile
+					<a href="getUser/${user.userId}" class="dropdown-item has-icon"> <i
+						class="far fa-user"></i> Profile
 					</a> <a href="/" class="dropdown-item has-icon text-danger"> <i
 						class="fas fa-sign-out-alt"></i> Logout
 					</a>
@@ -199,13 +216,13 @@
 				<li class="dropdown"><a href="/notes" class="nav-link"><i
 						class="fas fa-file-alt" style="font-size: 20px"></i><span>Notes</span></a></li>
 
-				
+
 
 
 			</ul>
 		</aside>
 	</div>
-	<div class="settingSidebar">
+	<!-- <div class="settingSidebar">
 		<a href="javascript:void(0)" class="settingPanelToggle"> <i
 			class="fa fa-spin fa-cog"></i>
 		</a>
@@ -300,7 +317,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	</div>
 	</div>
@@ -315,7 +332,7 @@
 	<script src="/assets/js/scripts.js"></script>
 	<!-- Custom JS File -->
 	<script src="/assets/js/custom.js"></script>
-	 <script type="text/javascript">
+	<script type="text/javascript">
 		window.onload = function() {
 			clock();
 			function clock() {
@@ -342,7 +359,7 @@
 				setTimeout(clock, 1000);
 			}
 		}
-	</script> 
+	</script>
 
 </body>
 </html>

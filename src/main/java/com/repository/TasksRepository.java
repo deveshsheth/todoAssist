@@ -22,16 +22,22 @@ public interface TasksRepository extends JpaRepository<TasksEntity, Long> {
 	
 	TasksEntity findByTaskId(Long taskId);
 
-	@Query(value="select * from tasks t where t.start_date=CURRENT_DATE and t.end_date=CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
-	List<TasksEntity> myDay(@Param("userid")Long userid);
-
+	Long countByUserId(Long userId);
+	 
 	@Query(value="select count(*) from tasks t where t.start_date=:obj and t.user_id=:userId",nativeQuery = true) 
 	Long countByStartDateAndUserId(LocalDate obj, Long userId);
 	  
     @Query(value="select count(*) from tasks t where t.important=1 and t.user_id=:userId",nativeQuery = true) 
 	Long countByImportantAndUserId(Long userId); 
     
-    Long countByUserId(Long userId);
+    @Query(value="select * from tasks t where t.start_date=CURRENT_DATE and t.end_date=CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
+	List<TasksEntity> myDay(@Param("userid")Long userid);
+    
+    @Query(value="select * from tasks t where t.start_date=CURRENT_DATE and t.end_date=CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
+	List<TasksEntity> myTodayNotification(@Param("userid")Long userid);
+
+	@Query(value="select * from tasks t where t.start_date>CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
+	List<TasksEntity> myUpcomingTask(@Param("userid")Long userid);
 	  
 
 	

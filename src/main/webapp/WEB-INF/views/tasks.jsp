@@ -92,21 +92,20 @@
 								<p>Are you sure want to delete the task?</p>
 
 							</div>
-							
-								<!--Footer-->
-								<div class="modal-footer flex-center">
-									<a href="#" id="deleteTask" class="btn btn-danger"
-										data-confirm="modal">Confirm</a> <a type="button"
-										class="btn btn-outline-danger waves-effect"
-										data-dismiss="modal">Close</a>
-								</div>
-						
+
+							<!--Footer-->
+							<div class="modal-footer flex-center">
+								<a href="" id="deleteTask" class="btn btn-danger">Confirm</a> <a
+									type="button" class="btn btn-outline-danger waves-effect"
+									data-dismiss="modal">Close</a>
+							</div>
 						</div>
 						<!--/.Content-->
 					</div>
 				</div>
 
 
+				
 
 				<!-- Complete Task -->
 				<div class="modal fade" id="modalPush1" tabindex="-1" role="dialog"
@@ -131,8 +130,8 @@
 
 							<!--Footer-->
 							<div class="modal-footer flex-center">
-								<a href="important" class="btn btn-success">Confirm</a> <a
-									type="button" class="btn btn-outline-success waves-effect"
+								<a href="" id="completeTask" class="btn btn-success">Confirm</a>
+								<a type="button" class="btn btn-outline-success waves-effect"
 									data-dismiss="modal">Close</a>
 							</div>
 						</div>
@@ -145,35 +144,36 @@
 
 					<c:forEach items="${listtasks}" var="task">
 
-
 						<h5>
 							<div class="row">
 								<div class="col-12">
 									<div class="card card-primary">
 										<div class="card-header">
-											<div class="custom-checkbox custom-checkbox-table custom-control">
+											<div
+												class="custom-checkbox custom-checkbox-table custom-control">
 												<input type="checkbox" data-checkboxes="mygroup"
 													data-checkbox-role="dad" class="custom-control-input"
 													id="checkbox-all"><label for="checkbox-all"
 													title="Complete Task"
-													class="custom-control-label"> <!-- data-toggle="modal"
-													data-target="#modalPush1" -->&nbsp;</label>
+													onclick="setCompleteId(${task.taskId})"
+													class="custom-control-label" data-toggle="modal"
+													data-target="#modalPush1">&nbsp;</label>
 											</div>
 											&nbsp;&nbsp;
 											<h4>${task.taskName}</h4>
 											<div class="card-header-action">
-											
+
 												<a href="/getTask/${task.taskId }"
 													class="btn btn-icon btn-primary"><i class="far fa-edit"
-													data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp; 
-													
-													<a href="/deleteTask/${task.taskId}" class="btn btn-icon btn-danger" data-toggle="modal"
-													data-target="#modalPush"><i class="fas fa-trash-alt"
-													title="Delete Task"></i></a>&nbsp;&nbsp; 
-													
-													<a href="/impTask/${task.taskId}" class="btn btn-icon btn-light" data-toggle="tooltip"
+													data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp; <a
+													class="btn btn-icon btn-danger" data-toggle="modal"
+													data-target="#modalPush"><i
+													onclick="setDelId(${task.taskId})" class="fas fa-trash-alt"
+													title="Delete Task" style="color: #fff"></i></a>&nbsp;&nbsp; <a
+													href="/impTask/${task.taskId}"
+													class="btn btn-icon btn-light" data-toggle="tooltip"
 													title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
-											
+
 											</div>
 										</div>
 										<div class="card-body">
@@ -206,14 +206,7 @@
 
 					</c:forEach>
 
-
-
 				</div>
-
-
-
-
-
 
 			</div>
 
@@ -232,21 +225,27 @@
 		}
 	</script>
 	<script>
-		var $rows = $('#task h5');
-		$('#searchtask').keyup(function() {
-			var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+			var	$rows = $('#task h5');
+			$('#searchtask').keyup(function() {
+				var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+				$rows.show().filter(function() {
+					var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+					return !~text.indexOf(val);
+				}).hide();
+			});
 
-			$rows.show().filter(function() {
-				var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-				return !~text.indexOf(val);
-			}).hide();
-		});
-	</script>
+			</script>
 	<script type="text/javascript">
-	function setDelId(taskiId) {
+	function setDelId(taskId) {
 		
-		//alert(taskid);
-			$("#deleteTask")[0].href="deleteTask/"+taskId;
+		//alert(taskId);
+			$("#deleteTask")[0].href="deletedTask/"+taskId;
+		}
+
+	function setCompleteId(taskId) {
+	
+		//alert(taskId);
+			$("#completeTask")[0].href="deletedTask/"+taskId;
 		}
 	</script>
 </body>

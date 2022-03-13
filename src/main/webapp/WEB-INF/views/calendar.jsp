@@ -1,3 +1,5 @@
+<%@page import="com.entity.TasksEntity"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -656,19 +658,38 @@
 							});
 
 		})(jQuery);
+		var dataNotes = []
+	<%ArrayList<TasksEntity> tasks = (ArrayList<TasksEntity>) request.getAttribute("listtaskcal");
+	
+	
+			System.out.println(tasks.size());
+	%>
+		
+	<%for (TasksEntity t : tasks)
 
+	{
+		System.out.println(t.getTaskName());
+
+	%>
+
+		dataNotes.push({
+
+			"TaskId" : <%=t.getTaskId()%>,
+			"TaskName" : " <%=t.getTaskName()%> ",
+			"StartDate" : "<%=t.getStartDate().getDayOfMonth()%>-<%=t.getStartDate().getMonthValue()%>-<%=t.getStartDate().getYear()%>",
+			"Time" : "<%=t.getTaskTime()%> ",
+			"EndDate" : "<%=t.getStartDate()%>",
+			"Description" : " <%=t.getDescription()%> ",
+			"ColourCode" : 10
+
+		})
+	<%}%>
+
+	console.log(dataNotes);
 		var data = {
-			"EventsList" : [ {
-				"TaskId" : 2,
-				"TaskName" : "( Task Name )",
-				"StartDate" : "29-10-2021",
-				"Time" : "(Task Time )",
-				"EndDate" : "29-10-2021",
-				"Description" : "( Task Description )",
-				"ColourCode" : 10
-			},
+			"EventsList" :  dataNotes
 
-			{
+			/* {
 				"TaskId" : 2,
 				"TaskName" : "( Task Name )",
 				"StartDate" : "15-11-2021",
@@ -692,9 +713,9 @@
 				"EndDate" : "25-10-2019",
 				"Description" : "( Task Description )",
 				"ColourCode" : 16
-			},
+			}, */
 
-			],
+			,
 			"LastUpdated" : "23-10-2019"
 		}
 	</script>

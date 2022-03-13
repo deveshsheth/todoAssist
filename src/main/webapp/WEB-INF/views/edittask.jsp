@@ -59,35 +59,35 @@
 								<div class="card-header">
 									<h4>Upload Task</h4>
 								</div>
-								<input type="hidden" name="taskId" value="${task.taskId }"/>
+								<input type="hidden" name="taskId" value="${taskedt.taskId }"/>
 								<div class="card-body">
 									<div class="form-group">
 										<label>Task Name</label> <input type="text" placeholder="Enter the Task Name"
-											class="form-control" value="${task.taskName }" name="taskName"
+											class="form-control" value="${taskedt.taskName }" name="taskName"
 											required>
 										
 									</div>
 									<div class="form-group">
 										<label>Description</label> <input type="text" placeholder="Enter the Task Description"
-											class="form-control" value="${task.description }" name="description"
+											class="form-control" value="${taskedt.description }" name="description"
 											required>
 										
 									</div>
 									<div class="form-group">
 										<label>Start Date</label> <input type="date" placeholder="Enter the Start Date"
-											class="form-control" value="${task.startDate }" name="startDate"
+											class="form-control" value="${taskedt.startDate }" name="startDate"
 											required>
 										
 									</div>
 									<div class="form-group">
 										<label>End Date</label> <input type="date" placeholder="Enter the End date"
-											class="form-control" value="${task.endDate }" name="endDate"
+											class="form-control" value="${taskedt.endDate }" name="endDate"
 											required>
 										
 									</div>
 									<div class="form-group">
 										<label>Time</label> <input type="time" placeholder="Enter the Task Time"
-											class="form-control" value="${task.taskTime }" name="taskTime"
+											class="form-control" value="${taskedt.taskTime }" name="taskTime"
 											required>
 										
 									</div>

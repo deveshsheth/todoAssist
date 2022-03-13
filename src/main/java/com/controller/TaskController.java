@@ -39,11 +39,12 @@ public class TaskController {
 	
 	
 	  @GetMapping("/getTask/{taskId}") 
-	  public String getTask(@PathVariable("taskId") Long taskId,Model model) { 
-	  
+	  public String getTask(@PathVariable("taskId") Long taskId,Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) { 
+		  List<TasksEntity> task = tasksrepository.myDay(user.getUserId());
+		  model.addAttribute("listtask", task);
 			
 			  TasksEntity edittasks = tasksrepository.getById(taskId);
-			  model.addAttribute("task", edittasks);
+			  model.addAttribute("taskedt", edittasks);
 			 
 	  
 	  return "edittask";
@@ -51,7 +52,8 @@ public class TaskController {
 	  }
 	 
 	
-	 @PostMapping("updateTask") public String updateTask(TasksEntity task) {
+	 @PostMapping("updateTask") 
+	 public String updateTask(TasksEntity task) {
 	  
 	  TasksEntity t = tasksrepository.getById(task.getTaskId());
 	  
@@ -70,6 +72,9 @@ public class TaskController {
 	public String tasks(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) { // TODO
 		// Auto-generated method stub
 		
+		List<TasksEntity> task = tasksrepository.myDay(user.getUserId());
+		  model.addAttribute("listtask", task);
+		
 		  List<TasksEntity> tasks = tasksrepository.findByUserId(user.getUserId());
 		  model.addAttribute("listtasks", tasks);
 		 
@@ -80,7 +85,9 @@ public class TaskController {
 	@GetMapping("/myday")
 	public String myday(Model model,@SessionAttribute("user") UserEntity user) {
 		// TODO Auto-generated method stub
-		
+		List<TasksEntity> task = tasksrepository.myDay(user.getUserId());
+		  model.addAttribute("listtask", task);
+		  
 		  List<TasksEntity> mydaytasks = tasksrepository.myDay(user.getUserId());
 		  model.addAttribute("mydaytask", mydaytasks);
 		 
@@ -95,14 +102,21 @@ public class TaskController {
 		
 		tasksrepository.save(utask);
 
-		return "redirect:/tasks";
+		return "redirect:/important";
 	}
 	
-	@GetMapping("/deleteTask/{taskId}")
-	public String deleteUser(@PathVariable("taskId") Long taskId) {
+	@GetMapping("deletedTask/{taskId}")
+	public String deleteTask(@PathVariable("taskId") Long taskId) {
 		tasksrepository.deleteById(taskId);
 
 		return "redirect:/tasks";
+	}
+	
+	@GetMapping("deletedTaskMyday/{taskId}")
+	public String deleteTaskMyDay(@PathVariable("taskId") Long taskId) {
+		tasksrepository.deleteById(taskId);
+
+		return "redirect:/myday";
 	}
 	
 	@GetMapping("unImportant/{taskId}")
@@ -122,6 +136,9 @@ public class TaskController {
 	public String important(Model model, @SessionAttribute("user") UserEntity user) {
 		// TODO Auto-generated method stub
 	
+		List<TasksEntity> task = tasksrepository.myDay(user.getUserId());
+		  model.addAttribute("listtask", task);
+		
 		System.out.println(user.getUserId()+"tasks");
 		List<TasksEntity> utasks=tasksrepository.findByUserIdAndImportant(user.getUserId(), 1);
 		System.out.println(utasks);

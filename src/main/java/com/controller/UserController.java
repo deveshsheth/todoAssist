@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.entity.TasksEntity;
 import com.entity.UserEntity;
 import com.repository.TasksRepository;
+import com.repository.UserRepository;
 
 
 
@@ -25,6 +27,7 @@ public class UserController {
 	@Autowired
 	
 	  TasksRepository tasksrepository;
+	UserRepository userrepository;
 	 
 	@GetMapping("/userhome")
 	public String users(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) {
@@ -65,10 +68,23 @@ public class UserController {
 	
 	
 	@GetMapping("/userheader")
-	public String userheader() {
+	public String userheader(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) {
 		// TODO Auto-generated method stub
+		  List<TasksEntity> task = tasksrepository.myTodayNotification(user.getUserId());
+		  model.addAttribute("todaytasknotification", task);
+		  
+		  List<TasksEntity> upcomingtask = tasksrepository.myDay(user.getUserId());
+		  //List<TasksEntity> upcomingtask = tasksrepository.myUpcomingTask(user.getUserId());
+		  model.addAttribute("upcomingtasks", upcomingtask);
+		  
 		return "userheader";
 		
+	}
+	
+	@GetMapping("/notes")
+	public String notes() {
+		// TODO Auto-generated method stub
+		return "notes";	
 	}
 	
 	@GetMapping("/usersidebar")
@@ -101,8 +117,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/calendar")
-	public String calendar() {
+	public String calendar(Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) {
 		// TODO Auto-generated method stub
+		List<TasksEntity> task = tasksrepository.findByUserId(user.getUserId());
+		  model.addAttribute("listtaskcal", task);
 		return "calendar";
 		
 	}
@@ -127,13 +145,36 @@ public class UserController {
 		return "editprofile";
 		
 	}
-
-	@GetMapping("/notes")
-	public String notes() {
-		// TODO Auto-generated method stub
-		return "notes";
-		
-	}
+	
+	
+	
+	 @GetMapping("/getUser/{userId}") 
+	  public String getUser(@PathVariable("userId") Long userId,Model model,@SessionAttribute("user") UserEntity user,HttpServletRequest req) { 
+			/*
+			 * List<TasksEntity> task = tasksrepository.myDay(user.getUserId());
+			 * model.addAttribute("listtask", task);
+			 */
+			  user = userrepository.getById(userId);
+			  model.addAttribute("useredt", user);
+	  
+	  return "myprofile";
+	  
+	  }
+	 
+	
+	 @PostMapping("updateUser") 
+	 public String updateUser(UserEntity user) {
+	  
+	  UserEntity u = userrepository.getById(user.getUserId());
+	  
+	  u.setEmail(user.getEmail()); 
+	  u.setMobileNo(user.getMobileNo());
+	  userrepository.save(u);
+	  
+	  return "redirect:/myprofile"; 
+	  
+	 }
+	 
 	
 	@GetMapping("/usersettings")
 	public String usersettings() {
@@ -146,6 +187,13 @@ public class UserController {
 	public String changepassword() {
 		// TODO Auto-generated method stub
 		return "changepassword";
+		
+	}
+	
+	@GetMapping("/addnotes")
+	public String addnotes() {
+		// TODO Auto-generated method stub
+		return "addnotes";
 		
 	}
 	

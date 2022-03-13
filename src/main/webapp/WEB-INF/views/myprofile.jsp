@@ -97,15 +97,6 @@
 										</div>
 									</div>
 
-
-									<!--  <div class="section-title">Education</div> -->
-									<!-- <ul>
-                          <li>B.A.,Gujarat University, Ahmedabad,India.</li>
-                          <li>M.A.,Gujarat University, Ahmedabad, India.</li>
-                          <li>P.H.D., Shaurashtra University, Rajkot</li>
-                        </ul>
-                        <div class="section-title">Experience</div> -->
-
 								</div>
 								<div class="tab-pane fade" id="settings" role="tabpanel"
 									aria-labelledby="profile-tab2">
@@ -113,6 +104,8 @@
 										<div class="card-header">
 											<h4>Edit Profile</h4>
 										</div>
+										
+										<input type="text" name="userId" value="${useredt.userId }"/>
 										<div class="card-body">
 											<div class="row">
 												<div class="form-group col-md-6 col-12">
@@ -128,7 +121,7 @@
 											</div>
 											<div class="row">
 												<div class="form-group col-md-7 col-12">
-													<label>Birthday</label> <input type="email"
+													<label>Birthday</label> <input type="text"
 														class="form-control" value=" ${user.dob}" disabled="disabled">
 													
 												</div>
@@ -140,18 +133,16 @@
 											<div class="row">
 												<div class="form-group col-md-7 col-12">
 													<label>Email</label> <input type="email"
-														class="form-control" value=" ${user.email}">
+														class="form-control" value=" ${useredt.email}">
 													<div class="invalid-feedback">Please fill in the
 														email</div>
 												</div>
 												<div class="form-group col-md-5 col-12">
 													<label>Phone</label> <input type="tel" class="form-control"
-														value=" ${user.mobileNo}">
+														value=" ${useredt.mobileNo}">
 												</div>
 											</div>
 											
-											
-
 
 										</div>
 										<div class="card-footer text-right">

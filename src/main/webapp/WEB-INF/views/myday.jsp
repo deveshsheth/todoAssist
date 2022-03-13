@@ -71,8 +71,7 @@
 				<br> <br> <br>
 
 
-
-				<!--Delete Task -->
+	<!--Delete Task -->
 				<div class="modal fade" id="modalPush" tabindex="-1" role="dialog"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-notify modal-info" role="document">
@@ -95,14 +94,16 @@
 
 							<!--Footer-->
 							<div class="modal-footer flex-center">
-								<a href="important" class="btn btn-danger">Confirm</a> <a
-									type="button" class="btn btn-outline-danger waves-effect"
+								<a href="" id="deleteTaskMyday"  class="btn btn-danger">Confirm</a> <a type="button"
+									class="btn btn-outline-danger waves-effect"
 									data-dismiss="modal">Close</a>
 							</div>
 						</div>
 						<!--/.Content-->
 					</div>
 				</div>
+
+
 
 
 				<!-- Complete Task -->
@@ -128,7 +129,7 @@
 
 							<!--Footer-->
 							<div class="modal-footer flex-center">
-								<a href="important" class="btn btn-success">Confirm</a> <a
+								<a href="" id="completeTaskMyday" class="btn btn-success">Confirm</a> <a
 									type="button" class="btn btn-outline-success waves-effect"
 									data-dismiss="modal">Close</a>
 							</div>
@@ -136,7 +137,6 @@
 						<!--/.Content-->
 					</div>
 				</div>
-
 
 				<div id="task">
 			<c:forEach items="${mydaytask}" var="tasks">
@@ -148,21 +148,32 @@
 											<div class="custom-checkbox custom-checkbox-table custom-control">
 												<input type="checkbox" data-checkboxes="mygroup"
 													data-checkbox-role="dad" class="custom-control-input"
-													id="checkbox-all"><a href="#"> <label for="checkbox-all"
-													title="Complete Task" class="custom-control-label"> <!-- data-toggle="modal"
-													data-target="#modalPush1" -->&nbsp;</label></a>
+													id="checkbox-all"><label for="checkbox-all"
+													title="Complete Task" onclick="setCompleteMyDayId(${tasks.taskId})"
+													class="custom-control-label" data-toggle="modal"
+													data-target="#modalPush1">&nbsp;</label>
 											</div>
 											&nbsp;&nbsp;
 											<h4>${tasks.taskName}</h4>
 											<div class="card-header-action">
 										
+													<a href="/getTask/${tasks.taskId}"
+													class="btn btn-icon btn-primary"><i class="far fa-edit"
+													data-toggle="tooltip" title="Edit Task"></i></a>&nbsp;&nbsp;
 													
-													<a href="/deleteTask/${tasks.taskId}" class="btn btn-icon btn-danger" data-toggle="modal"
-													data-target="#modalPush"><i class="fas fa-trash-alt"
-													title="Delete Task"></i></a>&nbsp;&nbsp; 
+													<a class="btn btn-icon btn-danger" data-toggle="modal"
+													data-target="#modalPush"><i onclick="setDelMyDayId(${tasks.taskId})" class="fas fa-trash-alt"
+													title="Delete Task" style="color: #fff"></i></a>&nbsp;&nbsp; 
 													
-													<a href="unImportant/${tasks.taskId}" class="btn btn-icon btn-light" data-toggle="tooltip"
-													title="Remove Mark Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
+													<a href="/impTask/${tasks.taskId}" class="btn btn-icon btn-light" data-toggle="tooltip"
+													title="Mark as Important"><i class="fas fa-star"></i></a>&nbsp;&nbsp;
+													
+													<div class="card-header-action">
+											
+										
+													
+											
+											</div>
 											
 											</div>
 										</div>
@@ -216,6 +227,19 @@
 				return !~text.indexOf(val);
 			}).hide();
 		});
+	</script>
+	<script type="text/javascript">
+	function setDelMyDayId(taskId) {
+		
+		//alert(taskId);
+			$("#deleteTaskMyday")[0].href="deletedTaskMyday/"+taskId;
+		}
+
+	function setCompleteMyDayId(taskId) {
+	
+		//alert(taskId);
+			$("#completeTaskMyday")[0].href="deletedTaskMyday/"+taskId;
+		}
 	</script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,10 +47,7 @@
 	href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
 	rel="stylesheet">
 <style type="text/css">
-/* A simple CSS calendar that uses a bit of 
-   JavaScript to display the current date.
-   Use the first variable to set the width. 
-   The month and day font size will scale automatically. */
+
 :root { -
 	-calwidth: 80px; -
 	-fontsize-month: calc(var(- -calwidth)/4); -
@@ -534,6 +531,7 @@
 
 		getLocation();
 	</script>
+	
 
 </body>
 </html>
