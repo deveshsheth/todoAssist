@@ -36,7 +36,7 @@ public interface TasksRepository extends JpaRepository<TasksEntity, Long> {
     @Query(value="select * from tasks t where t.start_date=CURRENT_DATE and t.end_date=CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
 	List<TasksEntity> myTodayNotification(@Param("userid")Long userid);
 
-	@Query(value="select * from tasks t where t.start_date>CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
+	@Query(value="select * from tasks t where t.start_date>CURRENT_DATE and t.end_date>CURRENT_DATE and t.user_id=:userid",nativeQuery = true)
 	List<TasksEntity> myUpcomingTask(@Param("userid")Long userid);
 	  
 

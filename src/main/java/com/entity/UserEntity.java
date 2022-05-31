@@ -39,4 +39,7 @@ public class UserEntity {
 	String password;
 	
 	int roleId;
+	
+	
+	
 }

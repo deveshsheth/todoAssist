@@ -501,11 +501,11 @@
 											+ v.StartDate
 											: v.StartDate + ' - ' + v.EndDate;
 
-									var tooltipTemplate = '<div>' + '<div>'
+									var tooltipTemplate = '<div>' + '<div><b>Task :</b>'
 											+ v.TaskName + '</div>' + '<hr>'
-											+ '<div>' + v.Description + ', '
-											+ '</div>' + '<div>' + dateTemplate
-											+ '</div>' + '<div>Time: ' + v.Time
+											+ '<div><b>Description : </b>' + v.Description + ', '
+											+ '</div>' + '<div><b>Date : </b>' + dateTemplate
+											+ '</div>' + '<div><b>Time : </b>' + v.Time
 											+ '</div>' + '</div>';
 
 									var eventTemplate = '<a class="event p-1 pl-2 pr-2 mb-1 text-truncate small bg-' + v.ColourCode + ' text-white" data-toggle="tooltip" data-placement="top" data-html="true" title="' + tooltipTemplate + '">'

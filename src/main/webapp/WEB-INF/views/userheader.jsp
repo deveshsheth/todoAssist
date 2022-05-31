@@ -132,7 +132,7 @@
 					<div class="dropdown-list-content dropdown-list-message"
 						tabindex="3" style="overflow: hidden; outline: none;">
 
-<p>fjfjfgii</p>
+<!-- <p>fjfjfgii</p> -->
 						 <c:forEach items="${todaytasknotification}" var="t">
 						<h1>djnifd</h1>
 						</c:forEach> 
@@ -158,13 +158,13 @@
 
 					<div class="dropdown-list-content dropdown-list-message"
 						tabindex="3" style="overflow: hidden; outline: none;">
-
-						<c:forEach items="${upcomingtasks}" var="task">
+<p>nnn</p>
+						<c:forEach items="${upcomingtasks}" var="t">
 							<a href="#" class="dropdown-item"> 
 							 
-							<span class="dropdown-item-desc"> <span class="message-user">${task.taskName}</span><br>
-							<span class="message-user">${task.description}</span><br> 
-							<span class="message-user" style="font-size: 12px">${task.taskTime}</span>
+							<span class="dropdown-item-desc"> <span class="message-user">${t.taskName}</span><br>
+							<span class="message-user">${t.description}</span><br> 
+							<span class="message-user" style="font-size: 12px">${t.taskTime}</span>
 							</span>
 							</a>
 						</c:forEach>
@@ -181,7 +181,7 @@
 				<div class="dropdown-menu dropdown-menu-right pullDown">
 					<div class="dropdown-title">Hello
 						${user.firstName}&nbsp;${user.lastName}</div>
-					<a href="getUser/${user.userId}" class="dropdown-item has-icon"> <i
+					<a href="myprofile" class="dropdown-item has-icon"> <i
 						class="far fa-user"></i> Profile
 					</a> <a href="/" class="dropdown-item has-icon text-danger"> <i
 						class="fas fa-sign-out-alt"></i> Logout
